@@ -1,0 +1,30 @@
+[
+  {      "id" : "1",
+      "name" : "Langton House Hotel",
+      "address" : "5 John Street, Kilkenny",
+      "phone" : "056-8845678 ",
+      "cuisine" : "Traditional Dining"
+    },
+    {
+      "id" : "2",
+      "name" : "Aroi",
+      "address" : "Friary Street, Kilkenny",
+      "phone" : "056-8830676 ",
+      "cuisine" : "Asian"
+    },
+    {
+      "id" : "3",
+      "name" : "Italian Connection",
+      "address" : "Palirament Street, Kilkenny",
+      "phone" : " 056-88321456",
+      "cuisine" : "Italian"
+    },
+    {
+      "id" : "4",
+      "name" : "Lemon Grass",
+      "address" : "John's Bridge, Kilkenny",
+      "phone" : " 056-88790324",
+      "cuisine" : "Asian"
+    }
+
+  ]

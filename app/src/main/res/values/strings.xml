@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">"Book 'n' Dine</string>
+    <string name="action_book">Booking</string>
+    <string name="action_mybookings">My Bookings</string>
+    <string name="bookingTitle">Welcome </string>
+    <string name="bookingSubtitle">Please select your desired restuarant </string>
+    <string name="bookingButton">Book</string>
+    <string name="restaurantName"></string>
+
+    <string name="myBookingsTitle">My Bookings</string>
+
+
+    <string name="title_activity_home">Welcome</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">"Book 'n' Dine"</string>
+    <string name="nav_header_subtitle">Making restaurant reservations more convenient.</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_booking">Book</string>
+    <string name="menu_mybookings">My Bookings</string>
+    <string name="menu_favourites">Favourites</string>
+    <string name="menu_about">About Us</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="About"> Hi I am Homer. Please vote for me </string>
+    <string name="action_about">About Us</string>
+</resources>
