@@ -7,9 +7,10 @@ import java.util.*
 
 @Parcelize
 data class  BookingModel(var id: Long = 0,
-                        val restaurantName : String,
-                        val numberOfPeople: Int,
-                        val date: Date,
-                         val time: Time
+                        val partyName: String,
+                        val partyAmount: Int,
+                         val bookingTime: String,
+                         val bookingDate: Date
+
 ) : Parcelable
 

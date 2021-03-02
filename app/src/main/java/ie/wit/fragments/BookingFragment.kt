@@ -1,21 +1,20 @@
 package ie.wit.fragments
 
 import android.os.Bundle
-import android.os.ParcelFileDescriptor.open
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.get
+import androidx.fragment.app.Fragment
 import ie.wit.R
 import ie.wit.main.BookingApp
 import ie.wit.models.BookingModel
-import kotlinx.android.synthetic.main.fragment_booking.*
 import kotlinx.android.synthetic.main.fragment_booking.view.*
-import org.jetbrains.anko.toast
-import java.io.IOException
-import java.io.InputStream
-import java.nio.channels.AsynchronousFileChannel.open
-import java.nio.channels.DatagramChannel.open
+import java.lang.Integer.parseInt
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +30,7 @@ class BookingFragment : Fragment() {
 
     lateinit var app: BookingApp
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         app = activity?.application as BookingApp
         super.onCreate(savedInstanceState)
@@ -40,7 +40,9 @@ class BookingFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+
     }
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -50,7 +52,10 @@ class BookingFragment : Fragment() {
         activity?.title = getString(R.string.action_book)
 
 
+        root.amountPicker.minValue = 1
+        root.amountPicker.maxValue=15
 
+        setButtonListener(root)
         return root;
     }
 
@@ -58,19 +63,30 @@ class BookingFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-            BookingFragment().apply {
-                arguments = Bundle().apply {}
-            }
+                BookingFragment().apply {
+                    arguments = Bundle().apply {}
+                }
     }
 
     fun setButtonListener(layout: View) {
         layout.bookButton.setOnClickListener {
+            val partyName = layout.name.text.toString()
+            val partySize = (layout.amountPicker.value)
+            val bookingTime = layout.bookingTime.text.toString()
+            val day: Int = layout.bookingDate.getDayOfMonth()
+            val month: Int =layout.bookingDate.getMonth()
+            val year: Int = layout.bookingDate.getYear()
+            val calendar: Calendar = Calendar.getInstance()
+            calendar.set(year, month, day)
+            val sdf = SimpleDateFormat("dd-MM-yyyy")
 
-            }
+            val formatedDate = sdf.format(calendar.getTime())
+            val date: Date = sdf.parse(formatedDate)
+
+
+                app.bookingsStore.create(BookingModel(partyName= partyName , partyAmount = partySize, bookingDate = date, bookingTime= bookingTime))
+            print(partyName)
         }
-
-
-
-      }
-
+        }
+    }
 

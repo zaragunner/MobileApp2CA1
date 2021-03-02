@@ -7,11 +7,11 @@ import ie.wit.models.BookingStore
 
 class BookingApp : Application() {
 
-    lateinit var donationsStore: BookingStore
+    lateinit var bookingsStore: BookingStore
 
     override fun onCreate() {
         super.onCreate()
-        donationsStore = BookingMemStore()
+        bookingsStore = BookingMemStore()
         Log.v("Donate","Donation App started")
     }
 }

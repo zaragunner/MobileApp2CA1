@@ -3,12 +3,18 @@
     <string name="action_book">Booking</string>
     <string name="action_mybookings">My Bookings</string>
     <string name="bookingTitle">Welcome </string>
-    <string name="bookingSubtitle">Please select your desired restuarant </string>
+    <string name="bookingSubtitle">Please enter all booking details</string>
     <string name="bookingButton">Book</string>
     <string name="restaurantName"></string>
-
+    <string name="enter_amount">Enter Amount</string>
+    <string name="totalSoFar"> Total Customers </string>
+    <string name="total"> Total  </string>
     <string name="myBookingsTitle">My Bookings</string>
-
+    <string name="partyName">Please Enter the Party Name</string>
+    <string name="datePrompt">  Date </string>
+    <string name="timePrompt">Time </string>
+    <string name="namePrompt"> Party Name</string>
+    <string name="partyAmount"> Number of people</string>
 
     <string name="title_activity_home">Welcome</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

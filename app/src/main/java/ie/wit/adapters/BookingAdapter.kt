@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ie.wit.R
 import ie.wit.models.BookingModel
+import kotlinx.android.synthetic.main.card_booking.view.*
 
 
 class BookingAdapter constructor(private var bookings: List<BookingModel>)
@@ -22,8 +23,8 @@ class BookingAdapter constructor(private var bookings: List<BookingModel>)
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val donation = bookings[holder.adapterPosition]
-        holder.bind(donation)
+        val book = bookings[holder.adapterPosition]
+        holder.bind(book)
     }
 
     override fun getItemCount(): Int = bookings.size
@@ -31,9 +32,10 @@ class BookingAdapter constructor(private var bookings: List<BookingModel>)
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(booking: BookingModel) {
-//            itemView.paymentamount.text = booking.amount.toString()
-//            itemView.paymentmethod.text = booking.paymentmethod
-//            itemView.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            itemView.bookedName.text = booking.partyName
+            itemView.bookedSize.text = booking.partyAmount.toString()
+            itemView.bookedTime.text=booking.bookingTime
+            itemView.bookedDate.text=booking.bookingDate.toString()
         }
     }
 }

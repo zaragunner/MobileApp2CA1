@@ -28,17 +28,13 @@ class Home : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var ft: FragmentTransaction
-var arr = arrayListOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action",
-                Snackbar.LENGTH_LONG).setAction("Action", null).show()
-        }
 
         navView.setNavigationItemSelectedListener(this)
 
@@ -54,7 +50,7 @@ var arr = arrayListOf<String>()
         val fragment = BookingFragment.newInstance()
         ft.replace(R.id.homeFrame, fragment)
         ft.commit()
-        read_json()
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -101,29 +97,7 @@ var arr = arrayListOf<String>()
         return super.onOptionsItemSelected(item)
     }
 
-    fun read_json(){
-        var json: String? = null
-        try{
-            val inputStream: InputStream = assets.open("restaurant.json")
-            json = inputStream.bufferedReader().use{it.readText()}
 
-             var jsonarr = JSONArray(json)
-
-           for (i in 0..jsonarr.length()-1)
-           {
-               var jsonobj = jsonarr.getJSONObject(i)
-               arr.add(jsonobj.getString("name"))
-           }
-
-            var adpt = ArrayAdapter(this, android.R.layout.simple_list_item_1,arr)
-            json_list.adapter = adpt
-        }
-        catch (e : IOException)
-        {
-
-
-        }
-    }
 }
 
 

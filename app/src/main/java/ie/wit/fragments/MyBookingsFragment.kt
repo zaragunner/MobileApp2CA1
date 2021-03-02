@@ -30,7 +30,7 @@ class MyBookingsFragment : Fragment() {
         var root = inflater.inflate(R.layout.fragment_mybookings, container, false)
 
         root.recyclerView.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView.adapter = BookingAdapter(app.donationsStore.findAll())
+        root.recyclerView.adapter = BookingAdapter(app.bookingsStore.findAll())
 
         return root
     }
