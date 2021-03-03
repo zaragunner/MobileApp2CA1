@@ -33,6 +33,7 @@ class BookingAdapter constructor(private var bookings: List<BookingModel>)
 
         fun bind(booking: BookingModel) {
             itemView.bookedName.text = booking.partyName
+            itemView.bookedContact.text=booking.partyContact
             itemView.bookedSize.text = booking.partyAmount.toString()
             itemView.bookedTime.text=booking.bookingTime
             itemView.bookedDate.text=booking.bookingDate.toString()

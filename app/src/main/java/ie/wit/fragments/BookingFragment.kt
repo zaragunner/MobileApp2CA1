@@ -52,8 +52,6 @@ class BookingFragment : Fragment() {
         activity?.title = getString(R.string.action_book)
 
 
-        root.amountPicker.minValue = 1
-        root.amountPicker.maxValue=15
 
         setButtonListener(root)
         return root;
@@ -70,9 +68,10 @@ class BookingFragment : Fragment() {
 
     fun setButtonListener(layout: View) {
         layout.bookButton.setOnClickListener {
-            val partyName = layout.name.text.toString()
-            val partySize = (layout.amountPicker.value)
-            val bookingTime = layout.bookingTime.text.toString()
+            val partyName = layout.partyname.text.toString()
+            val partyContact = layout.bookingContact.text.toString()
+            val partySize = parseInt(layout.bookedpartyamount.text.toString())
+            val bookingTime = layout.textView15.text.toString()
             val day: Int = layout.bookingDate.getDayOfMonth()
             val month: Int =layout.bookingDate.getMonth()
             val year: Int = layout.bookingDate.getYear()
@@ -84,7 +83,7 @@ class BookingFragment : Fragment() {
             val date: Date = sdf.parse(formatedDate)
 
 
-                app.bookingsStore.create(BookingModel(partyName= partyName , partyAmount = partySize, bookingDate = date, bookingTime= bookingTime))
+                app.bookingsStore.create(BookingModel(partyName= partyName , partyAmount = partySize,partyContact = partyContact, bookingDate = date, bookingTime= bookingTime))
             print(partyName)
         }
         }
