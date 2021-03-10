@@ -2,14 +2,14 @@ package ie.wit.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.sql.Time
 import java.util.*
 
 @Parcelize
 data class  BookingModel(var id: Long = 0,
-                        val restaurantName : String,
-                        val numberOfPeople: Int,
-                        val date: Date,
-                         val time: Time
-) : Parcelable
+                         var partyName: String = "",
+                         var partyContact: String = "",
+                         var partyAmount: Int = 0,
+                         var bookingTime: String = "",
+                         var bookingDate: String = ""
 
+) : Parcelable

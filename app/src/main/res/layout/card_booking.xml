@@ -8,43 +8,147 @@
     android:layout_marginBottom="8dp"
     android:elevation="24dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/imageIcon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp"
-            app:srcCompat="@mipmap/ic_launcher_round" />
-
         <TextView
-            android:id="@+id/restaurantname"
-            android:layout_width="105dp"
+            android:id="@+id/Name"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/imageIcon"
+            android:text="Name:"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/contact"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.017"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/bookedName"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:text="TextView"
             android:textColor="#000000"
             android:textSize="24sp"
-           />
+            app:layout_constraintStart_toEndOf="@+id/Name"
+            app:layout_constraintStart_toStartOf="@+id/bookedContact"
+            app:layout_constraintTop_toTopOf="@+id/Name"
+            tools:text="Daly" />
 
         <TextView
-            android:id="@+id/paymentmethod"
-            android:layout_width="wrap_content"
+            android:id="@+id/contact"
+            android:layout_width="157dp"
+            android:layout_height="33dp"
+            android:layout_alignParentTop="true"
+            android:text="Contact Number:"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bookedContact"
+            tools:text="Contact Number" />
+
+        <TextView
+            android:id="@+id/bookedContact"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-
+            android:layout_marginTop="16dp"
+            android:text="TextView"
             android:textColor="#000000"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/contact"
+            app:layout_constraintStart_toStartOf="@+id/bookedSize"
+            app:layout_constraintTop_toBottomOf="@+id/bookedName"
+            tools:text="Number" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingTop="10dp"
+            android:text="Party Size:"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/contact"
+            app:layout_constraintTop_toTopOf="@+id/bookedSize"
+            tools:text="Party Size:" />
+
+
+        <TextView
+            android:id="@+id/bookedSize"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/bookedContact"
+            android:paddingTop="10dp"
+            android:text="Party Size"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/amount"
+            app:layout_constraintStart_toStartOf="@+id/bookedDate"
+            app:layout_constraintTop_toBottomOf="@+id/bookedContact" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:text="Date:"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/amount"
+            app:layout_constraintTop_toTopOf="@+id/bookedDate"
+            tools:text="Date:" />
+
+        <TextView
+            android:id="@+id/bookedDate"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/bookedSize"
+            android:text="Party Date"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/date"
+            app:layout_constraintStart_toStartOf="@+id/bookedTime"
+            app:layout_constraintTop_toBottomOf="@+id/bookedSize" />
+
+        <TextView
+            android:id="@+id/bookedTime"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="24dp"
+            android:layout_toEndOf="@+id/bookedDate"
+            android:text="Party Time"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.367"
+            app:layout_constraintStart_toEndOf="@+id/time"
+            app:layout_constraintTop_toBottomOf="@+id/bookedDate" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="Time"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/date"
+            app:layout_constraintTop_toTopOf="@+id/bookedTime"
+            tools:text="Time:" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

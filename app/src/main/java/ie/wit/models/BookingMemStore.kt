@@ -10,25 +10,33 @@ internal fun getId(): Long {
 
 class BookingMemStore : BookingStore {
 
-        val mybookings = ArrayList<BookingModel>()
+        val bookings = ArrayList<BookingModel>()
 
         override fun findAll(): List<BookingModel> {
-            return mybookings
+            return bookings
         }
 
         override fun findById(id:Long) : BookingModel? {
-            val foundBooking: BookingModel? = mybookings.find { it.id == id }
+            val foundBooking: BookingModel? = bookings.find { it.id == id }
             return foundBooking
         }
 
         override fun create(booking: BookingModel) {
             booking.id = getId()
-            mybookings.add(booking)
+            bookings.add(booking)
             logAll()
         }
 
-        fun logAll() {
+    override fun update(bookingModel: BookingModel) {
+        TODO("Not yet implemented")
+    }
+
+    override fun delete(booking: BookingModel) {
+        TODO("Not yet implemented")
+    }
+
+    fun logAll() {
             Log.v("Booking","** My Booking List **")
-            mybookings.forEach { Log.v("Booking","${it}") }
+            bookings.forEach { Log.v("Booking","${it}") }
         }
     }

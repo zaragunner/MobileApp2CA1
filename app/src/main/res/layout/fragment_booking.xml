@@ -1,123 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.BookingFragment">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/bookingTitle"
-        android:layout_width="188dp"
-        android:layout_height="30dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/bookingTitle"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
 
-    <TextView
-        android:id="@+id/bookingSubtitle"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/bookingTitle"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/bookingTitle"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/bookingSubtitle"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114" />
+        android:paddingRight="20dp"
+        android:paddingBottom="40dp"
+
+        tools:context=".fragments.BookingFragment">
 
 
+        <TextView
+            android:id="@+id/Title"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="20dp"
+            android:text="@string/bookingTitle"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/bookButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/bookingButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        <TextView
+            android:id="@+id/subtitle"
+            android:textColor="@color/darkGrey"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:text="@string/bookingSubtitle"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Title" />
+
+        <TextView
+            android:id="@+id/partynameinput"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:text="@string/partyName"
+            app:layout_constraintStart_toStartOf="@+id/partyamount"
+            app:layout_constraintTop_toTopOf="@+id/partyname" />
+
+        <EditText
+            android:id="@+id/partyname"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/partynameinput"
+            app:layout_constraintStart_toStartOf="@+id/bookedpartyamount"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+        <TextView
+            android:id="@+id/partyamount"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+           android:layout_marginTop="20dp"
+            android:text="@string/partyAmount"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/partyContact"
+            app:layout_constraintTop_toBottomOf="@+id/partynameinput"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/bookedpartyamount"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+
+            android:inputType="number"
+            app:layout_constraintStart_toEndOf="@+id/partyamount"
+            app:layout_constraintStart_toStartOf="@+id/bookingContact"
+            app:layout_constraintTop_toTopOf="@+id/partyamount" />
+
+        <TextView
+            android:id="@+id/partyContact"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:text="@string/partycontact"
+            app:layout_constraintStart_toStartOf="@+id/time"
+            app:layout_constraintTop_toTopOf="@+id/bookingContact" />
+
+        <EditText
+            android:id="@+id/textView15"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:inputType="time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.321"
+            app:layout_constraintStart_toEndOf="@+id/time"
+            app:layout_constraintTop_toTopOf="@+id/time" />
+
+        <EditText
+            android:id="@+id/bookingContact"
+            android:textColor="@color/darkGrey"
+            android:layout_width="181dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/partyContact"
+            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/bookedpartyamount"
+            app:layout_constraintVertical_bias="0.028" />
+
+        <TextView
+            android:id="@+id/time"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/timePrompt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.108"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/partyContact" />
+
+        <TextView
+            android:id="@+id/bookedDate"
+            android:textColor="@color/darkGrey"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:text="@string/datePrompt"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time" />
 
 
-    <NumberPicker
-        android:id="@+id/amountPicker"
-        style="@android:style/Widget.Material.NumberPicker"
-        android:layout_width="64dp"
-        android:layout_height="161dp"
-        android:layout_alignEnd="@+id/bookingSubtitle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.035" />
+        <DatePicker
+            android:id="@+id/bookingDate"
+            android:textColor="@color/darkGrey"
+            android:layout_width="311dp"
+            android:layout_height="370dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookedDate"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="349dp"
-        android:layout_height="14dp"
-        android:layout_above="@+id/bookButton"
-        android:layout_alignEnd="@+id/bookingSubtitle"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:indeterminate="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        <Button
+            android:id="@+id/bookButton"
+            android:textColor="@color/darkGrey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookingDate"
+            app:layout_constraintVertical_bias="0.6" />
+        /
+        >
 
-    <TextView
-        android:id="@+id/amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.778" />
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
