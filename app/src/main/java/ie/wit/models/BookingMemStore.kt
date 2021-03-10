@@ -27,6 +27,10 @@ class BookingMemStore : BookingStore {
             logAll()
         }
 
+    override fun update(bookingModel: BookingModel) {
+        TODO("Not yet implemented")
+    }
+
     override fun delete(booking: BookingModel) {
         TODO("Not yet implemented")
     }

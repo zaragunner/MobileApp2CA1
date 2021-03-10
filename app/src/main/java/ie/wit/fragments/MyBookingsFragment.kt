@@ -10,6 +10,7 @@ import ie.wit.R
 import ie.wit.adapters.BookingAdapter
 import ie.wit.main.BookingApp
 import ie.wit.models.BookingModel
+import kotlinx.android.synthetic.main.card_booking.*
 import kotlinx.android.synthetic.main.fragment_mybookings.view.*
 import kotlinx.android.synthetic.main.fragment_booking.view.*
 
@@ -19,6 +20,7 @@ interface BookingListener {
 
     class MyBookingsFragment : Fragment(), BookingListener {
         lateinit var app: BookingApp
+
 
 
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +37,7 @@ interface BookingListener {
 
             root.recyclerView.setLayoutManager(LinearLayoutManager(activity))
             root.recyclerView.adapter = BookingAdapter(app.bookingsStore.findAll())
+
             { item ->
 
                 app.chosenBooking = item
@@ -45,8 +48,17 @@ interface BookingListener {
                 fragmentTransaction?.addToBackStack(null)
                 fragmentTransaction?.commit()
             }
+            setSortBtnListener(root)
 
             return root
+        }
+        fun setSortBtnListener(layout: View) {
+            layout.sortBtn.setOnClickListener{
+                app.bookingsStore.findAll().sortedBy { date.toString() }
+
+//                sortedBy { date.toString()}
+
+            }
         }
 
 
