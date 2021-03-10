@@ -8,8 +8,8 @@ import ie.wit.R
 import ie.wit.models.BookingModel
 import kotlinx.android.synthetic.main.card_booking.view.*
 
-
-class BookingAdapter constructor(private var bookings: List<BookingModel>)
+class BookingAdapter (private var bookings: List<BookingModel>,
+                      private val listener: (BookingModel) -> Unit)
     : RecyclerView.Adapter<BookingAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -23,8 +23,9 @@ class BookingAdapter constructor(private var bookings: List<BookingModel>)
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val book = bookings[holder.adapterPosition]
-        holder.bind(book)
+        val booking = bookings[holder.adapterPosition]
+        holder.bind(booking)
+        holder.itemView.setOnClickListener{listener(booking)}
     }
 
     override fun getItemCount(): Int = bookings.size

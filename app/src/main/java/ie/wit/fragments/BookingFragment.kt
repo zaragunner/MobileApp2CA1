@@ -16,24 +16,17 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DonateFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BookingFragment : Fragment() {
 
     lateinit var app: BookingApp
+    var bookings = BookingModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        app = activity?.application as BookingApp
         super.onCreate(savedInstanceState)
+        app = activity?.application as BookingApp
+
 
     }
 
@@ -68,10 +61,11 @@ class BookingFragment : Fragment() {
 
     fun setButtonListener(layout: View) {
         layout.bookButton.setOnClickListener {
-            val partyName = layout.partyname.text.toString()
-            val partyContact = layout.bookingContact.text.toString()
-            val partySize = parseInt(layout.bookedpartyamount.text.toString())
-            val bookingTime = layout.textView15.text.toString()
+
+bookings.partyName = layout.partyname.text.toString()
+            bookings.partyContact = layout.bookingContact.text.toString()
+            bookings.partyAmount = parseInt(layout.bookedpartyamount.text.toString())
+           bookings.bookingTime = layout.textView15.text.toString()
             val day: Int = layout.bookingDate.getDayOfMonth()
             val month: Int =layout.bookingDate.getMonth()
             val year: Int = layout.bookingDate.getYear()
@@ -81,10 +75,9 @@ class BookingFragment : Fragment() {
 
             val formatedDate = sdf.format(calendar.getTime())
             val date: Date = sdf.parse(formatedDate)
+            val date1 = date.toString()
 
-
-                app.bookingsStore.create(BookingModel(partyName= partyName , partyAmount = partySize,partyContact = partyContact, bookingDate = date, bookingTime= bookingTime))
-            print(partyName)
+            app.bookingsStore.create(BookingModel(partyName= bookings.partyName , partyAmount = bookings.partyAmount,partyContact = bookings.partyContact, bookingDate = date1, bookingTime=bookings.bookingTime))
         }
         }
     }
