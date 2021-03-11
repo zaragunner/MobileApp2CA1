@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/edit_fragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/booking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="20dp"
+        android:paddingBottom="40dp"
+
+        tools:context=".fragments.BookingFragment">
+
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="180dp"
+            android:layout_height="20dp"
+            android:text="@string/bookingTitle"
+            android:textAlignment="center"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="28dp"
+            android:text="@string/bookingSubtitle"
+            android:textAlignment="center"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Title" />
+
+        <TextView
+            android:id="@+id/partynameinput"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/partyName"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+        <EditText
+            android:id="@+id/editpartyname"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.392"
+            app:layout_constraintStart_toEndOf="@+id/partynameinput"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+        <TextView
+            android:id="@+id/partyamount"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/partyAmount"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintBottom_toTopOf="@+id/partyContact"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/partynameinput" />
+
+        <EditText
+            android:id="@+id/editbookedpartyamount"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="48dp"
+            android:inputType="number"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.461"
+            app:layout_constraintStart_toEndOf="@+id/partyamount"
+            app:layout_constraintTop_toBottomOf="@+id/editpartyname" />
+
+        <TextView
+            android:id="@+id/partyContact"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="112dp"
+            android:text="@string/partycontact"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/partynameinput" />
+
+        <EditText
+            android:id="@+id/edittextView15"
+            android:layout_width="183dp"
+            android:layout_height="56dp"
+            android:inputType="time"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.445"
+            app:layout_constraintStart_toEndOf="@+id/time"
+            app:layout_constraintTop_toTopOf="@+id/time" />
+
+        <EditText
+            android:id="@+id/editbookingContact"
+            android:layout_width="181dp"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toEndOf="@+id/partyContact"
+            app:layout_constraintTop_toBottomOf="@+id/editbookedpartyamount" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="44dp"
+            android:text="@string/timePrompt"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/partyContact" />
+
+        <TextView
+            android:id="@+id/bookedDate"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:text="@string/datePrompt"
+            android:textAlignment="center"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time" />
+
+
+        <DatePicker
+            android:id="@+id/editbookingDate"
+            android:layout_width="318dp"
+            android:layout_height="408dp"
+            android:textColor="@color/darkGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookedDate"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.284"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editbookingDate"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/updateBtn"
+            app:layout_constraintTop_toBottomOf="@+id/editbookingDate" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
