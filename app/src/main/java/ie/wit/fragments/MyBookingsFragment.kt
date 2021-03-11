@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ie.wit.R
 import ie.wit.adapters.BookingAdapter
 import ie.wit.main.BookingApp
+import ie.wit.models.BookingMemStore
 import ie.wit.models.BookingModel
 import kotlinx.android.synthetic.main.card_booking.*
 import kotlinx.android.synthetic.main.fragment_mybookings.view.*
@@ -48,18 +49,31 @@ interface BookingListener {
                 fragmentTransaction?.addToBackStack(null)
                 fragmentTransaction?.commit()
             }
-            setSortBtnListener(root)
+//            setSortBtnListener(root)
 
             return root
         }
-        fun setSortBtnListener(layout: View) {
-            layout.sortBtn.setOnClickListener{
-                app.bookingsStore.findAll().sortedBy { date.toString() }
+//        fun setSortBtnListener(layout: View) {
+//            var sortedList = ArrayList<BookingModel>()
+//            var bookings = BookingMemStore()
+//            layout.sortBtn.setOnClickListener{
+//                for (each in app.bookingsStore.findAll()){
+//                    for (i in app.bookingsStore.findAll()){
+//                    var id = bookings.bookings.get(i).id
+//                    var foundBooking = app.bookingsStore.findById(id)
+//                    if (foundBooking != null ){
+//                        if(foundBooking.bookingDate > bookings.bookingDate)
+//                        sortedList.add(foundBooking)
+//
+//                    }
+//                    println(foundBooking)
+//                    println(bookings)
+//
+//
+//                }
 
 //                sortedBy { date.toString()}
 
-            }
-        }
 
 
         companion object {

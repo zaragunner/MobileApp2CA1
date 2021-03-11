@@ -34,6 +34,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <string name="About"> Hi I am Homer. Please vote for me </string>
-    <string name="action_about">About Us</string>
+    <string name="AboutHeading">Welcome </string>
+
+        <string name="AboutContent"> The purpose of this application is for our own internal staff to record and log all bookings made for our restaurant. </string>
+    <string name="action_about">About</string>
 </resources>

@@ -1,6 +1,7 @@
 package ie.wit.models
 
 import android.util.Log
+import java.lang.Integer.parseInt
 
 var lastId = 0L
 
@@ -21,6 +22,7 @@ class BookingMemStore : BookingStore {
             return foundBooking
         }
 
+
         override fun create(booking: BookingModel) {
             booking.id = getId()
             bookings.add(booking)
@@ -28,7 +30,7 @@ class BookingMemStore : BookingStore {
         }
 
     override fun update(bookingModel: BookingModel) {
-        TODO("Not yet implemented")
+        TODO("Not yet impledmented")
     }
 
     override fun delete(booking: BookingModel) {

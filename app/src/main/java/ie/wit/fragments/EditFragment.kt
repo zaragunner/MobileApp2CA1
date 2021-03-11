@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ie.wit.R
 import ie.wit.adapters.BookingAdapter
@@ -104,24 +105,32 @@ class EditFragment : Fragment() {
 
             booking.bookingDate = date1
 
-            app.bookingsStore.update(
-                BookingModel(
-                    partyName = booking.partyName,
-                    partyAmount = booking.partyAmount,
-                    partyContact = booking.partyContact,
-                    bookingDate = booking.bookingDate,
-                    bookingTime = booking.bookingTime
+            if (layout.editbookingContact.text.isEmpty() ||
+                layout.editpartyname.text.isEmpty() ||
+                layout.editbookedpartyamount.text.isEmpty() ||
+                layout.edittextView15.text.isEmpty()
+            ) {
+                Toast.makeText(getActivity(), "All fields must be filled", Toast.LENGTH_SHORT)
+                    .show();
+            } else {
+                app.bookingsStore.update(
+                    BookingModel(
+                        partyName = booking.partyName,
+                        partyAmount = booking.partyAmount,
+                        partyContact = booking.partyContact,
+                        bookingDate = booking.bookingDate,
+                        bookingTime = booking.bookingTime
+                    )
                 )
-            )
-            val fragment = BookingListener.MyBookingsFragment()
-            val ft = activity!!.supportFragmentManager
-            val fragmentTransaction = fragmentManager?.beginTransaction()
-            fragmentTransaction?.replace(R.id.homeFrame, fragment);
-            fragmentTransaction?.addToBackStack(null)
-            fragmentTransaction?.commit()
+                val fragment = BookingListener.MyBookingsFragment()
+                val ft = activity!!.supportFragmentManager
+                val fragmentTransaction = fragmentManager?.beginTransaction()
+                fragmentTransaction?.replace(R.id.homeFrame, fragment);
+                fragmentTransaction?.addToBackStack(null)
+                fragmentTransaction?.commit()
 
 
-
+            }
 
         }
     }
