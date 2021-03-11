@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import ie.wit.R
@@ -62,12 +63,12 @@ class BookingFragment : Fragment() {
     fun setButtonListener(layout: View) {
         layout.bookButton.setOnClickListener {
 
-bookings.partyName = layout.partyname.text.toString()
+            bookings.partyName = layout.partyname.text.toString()
             bookings.partyContact = layout.bookingContact.text.toString()
             bookings.partyAmount = parseInt(layout.bookedpartyamount.text.toString())
-           bookings.bookingTime = layout.textView15.text.toString()
+            bookings.bookingTime = layout.textView15.text.toString()
             val day: Int = layout.bookingDate.getDayOfMonth()
-            val month: Int =layout.bookingDate.getMonth()
+            val month: Int = layout.bookingDate.getMonth()
             val year: Int = layout.bookingDate.getYear()
             val calendar: Calendar = Calendar.getInstance()
             calendar.set(year, month, day)
@@ -77,7 +78,24 @@ bookings.partyName = layout.partyname.text.toString()
             val date: Date = sdf.parse(formatedDate)
             val date1 = date.toString()
 
-            app.bookingsStore.create(BookingModel(partyName= bookings.partyName , partyAmount = bookings.partyAmount,partyContact = bookings.partyContact, bookingDate = date1, bookingTime=bookings.bookingTime))
+            if (layout.bookingContact.text.isEmpty() ||
+                layout.partyname.text.isEmpty() ||
+                layout.partyamount.text.isEmpty() ||
+                layout.textView15.text.isEmpty()
+            ) {
+                Toast.makeText(getActivity(), "All fields must be filled", Toast.LENGTH_SHORT)
+                    .show();
+            } else {
+                app.bookingsStore.create(
+                    BookingModel(
+                        partyName = bookings.partyName,
+                        partyAmount = bookings.partyAmount,
+                        partyContact = bookings.partyContact,
+                        bookingDate = date1,
+                        bookingTime = bookings.bookingTime
+                    )
+                )
+            }
         }
         }
     }
