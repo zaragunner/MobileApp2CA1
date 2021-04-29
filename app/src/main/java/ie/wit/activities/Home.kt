@@ -15,10 +15,13 @@ import ie.wit.R
 import ie.wit.fragments.AboutUsFragment
 import ie.wit.fragments.BookingFragment
 import ie.wit.fragments.BookingListener
+import ie.wit.main.BookingApp
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.fragment_booking.*
 import kotlinx.android.synthetic.main.home.*
+import kotlinx.android.synthetic.main.nav_header_home.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.json.JSONArray
 import java.io.IOException
@@ -28,12 +31,14 @@ class Home : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var ft: FragmentTransaction
+    lateinit var app: BookingApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         setSupportActionBar(toolbar)
+        app = application as BookingApp
 
 
         navView.setNavigationItemSelectedListener(this)
@@ -47,6 +52,8 @@ class Home : AppCompatActivity(),
         toggle.syncState()
         ft = supportFragmentManager.beginTransaction()
 
+        navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
+
         val fragment = BookingFragment.newInstance()
         ft.replace(R.id.homeFrame, fragment)
         ft.commit()
@@ -59,6 +66,8 @@ class Home : AppCompatActivity(),
             R.id.nav_book -> navigateTo(BookingFragment.newInstance())
             R.id.nav_mybookings -> navigateTo(BookingListener.MyBookingsFragment.newInstance())
             R.id.nav_aboutus -> navigateTo(AboutUsFragment.newInstance())
+            R.id.nav_sign_out ->
+                signOut()
 
             else -> toast("You Selected Something Else")
         }
@@ -95,6 +104,13 @@ class Home : AppCompatActivity(),
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun signOut()
+    {
+        app.auth.signOut()
+        startActivity<Login>()
+        finish()
     }
 
 

@@ -1,5 +1,6 @@
 package ie.wit.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import ie.wit.R
 import ie.wit.main.BookingApp
 import ie.wit.models.BookingModel
+import ie.wit.utils.createLoader
 import kotlinx.android.synthetic.main.fragment_booking.view.*
 import java.lang.Integer.parseInt
 import java.text.DateFormat
@@ -22,6 +24,7 @@ class BookingFragment : Fragment() {
 
     lateinit var app: BookingApp
     var bookings = BookingModel()
+    lateinit var loader : androidx.appcompat.app.AlertDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +46,7 @@ class BookingFragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_booking, container, false)
+        loader = createLoader(activity!!)
         activity?.title = getString(R.string.action_book)
 
 
