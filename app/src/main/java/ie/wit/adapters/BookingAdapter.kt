@@ -45,6 +45,7 @@ class BookingAdapter (private var bookings: ArrayList<BookingModel>,
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(booking: BookingModel, listener: BookingListener) {
+            itemView.tag = booking
             itemView.bookedName.text = booking.partyName
             itemView.bookedContact.text=booking.partyContact
             itemView.bookedSize.text = booking.partyAmount.toString()

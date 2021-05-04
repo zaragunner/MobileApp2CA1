@@ -58,11 +58,14 @@ interface BookingListener {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val adapter = root.recyclerView.adapter as BookingAdapter
                     adapter.removeAt(viewHolder.adapterPosition)
-
+                    deleteBooking((viewHolder.itemView.tag as BookingModel).uid)
+                    deleteUserBooking(app.auth.currentUser!!.uid,
+                        (viewHolder.itemView.tag as BookingModel).uid)
                 }
             }
             val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
             itemTouchDeleteHelper.attachToRecyclerView(root.recyclerView)
+
 
             return root
         }
