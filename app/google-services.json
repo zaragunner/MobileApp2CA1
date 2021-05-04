@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1069075280029",
+    "firebase_url": "https://book-n-dine-59501-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "book-n-dine-59501",
+    "storage_bucket": "book-n-dine-59501.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069075280029:android:84c98bb706d07d0a48e474",
+        "android_client_info": {
+          "package_name": "ie.wit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069075280029-nthkkqpuepm1t699j3navrp7a7de48th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAH0BI63yBAJyOOZ0X66sblFh7e7zugGrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1069075280029-nthkkqpuepm1t699j3navrp7a7de48th.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

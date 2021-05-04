@@ -1,30 +1,32 @@
 package ie.wit.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.get
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import ie.wit.R
 import ie.wit.main.BookingApp
 import ie.wit.models.BookingModel
 import ie.wit.utils.createLoader
+import ie.wit.utils.hideLoader
+import ie.wit.utils.showLoader
 import kotlinx.android.synthetic.main.fragment_booking.view.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import java.lang.Integer.parseInt
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 
-class BookingFragment : Fragment() {
+class BookingFragment : Fragment(), AnkoLogger {
 
     lateinit var app: BookingApp
     var bookings = BookingModel()
-    lateinit var loader : androidx.appcompat.app.AlertDialog
+    lateinit var loader: AlertDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,15 +43,12 @@ class BookingFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-
         val root = inflater.inflate(R.layout.fragment_booking, container, false)
         loader = createLoader(activity!!)
         activity?.title = getString(R.string.action_book)
-
-
 
         setButtonListener(root)
         return root;
@@ -59,9 +58,9 @@ class BookingFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-                BookingFragment().apply {
-                    arguments = Bundle().apply {}
-                }
+            BookingFragment().apply {
+                arguments = Bundle().apply {}
+            }
     }
 
     fun setButtonListener(layout: View) {
@@ -90,17 +89,50 @@ class BookingFragment : Fragment() {
                 Toast.makeText(getActivity(), "All fields must be filled", Toast.LENGTH_SHORT)
                     .show();
             } else {
-                app.bookingsStore.create(
+//                app.bookingsStore.create(
+//                    BookingModel(
+//                        partyName = bookings.partyName,
+//                        partyAmount = bookings.partyAmount,
+//                        partyContact = bookings.partyContact,
+//                        bookingDate = date1,
+//                        bookingTime = bookings.bookingTime
+//                    )
+                writeNewBooking(
                     BookingModel(
                         partyName = bookings.partyName,
                         partyAmount = bookings.partyAmount,
                         partyContact = bookings.partyContact,
                         bookingDate = date1,
-                        bookingTime = bookings.bookingTime
+                        bookingTime = bookings.bookingTime,
+                        email = app.auth.currentUser?.email
                     )
+
                 )
             }
         }
-        }
+
     }
+
+
+    fun writeNewBooking(booking: BookingModel) {
+        // Create new booking at /bookings & /bookings/$uid
+        showLoader(loader, "Adding Booking to Firebase")
+        info("Firebase DB Reference : $app.database")
+        val uid = app.auth.currentUser!!.uid
+        val key = app.database.child("bookings").push().key
+        if (key == null) {
+            info("Firebase Error : Key Empty")
+            return
+        }
+        booking.uid = key
+        val bookingValues = booking.toMap()
+
+        val childUpdates = HashMap<String, Any>()
+        childUpdates["/bookings/$key"] = bookingValues
+        childUpdates["/user-bookings/$uid/$key"] = bookingValues
+
+        app.database.updateChildren(childUpdates)
+        hideLoader(loader)
+    }
+}
 

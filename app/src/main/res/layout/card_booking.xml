@@ -8,7 +8,7 @@
     android:layout_marginBottom="8dp"
     android:elevation="24dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
@@ -150,5 +150,5 @@
             app:layout_constraintTop_toTopOf="@+id/bookedTime"
             tools:text="Time:" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

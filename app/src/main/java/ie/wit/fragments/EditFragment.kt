@@ -7,23 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ie.wit.R
-import ie.wit.adapters.BookingAdapter
 import ie.wit.main.BookingApp
-import ie.wit.models.BookingMemStore
 import ie.wit.models.BookingModel
-import kotlinx.android.synthetic.main.card_booking.*
-import kotlinx.android.synthetic.main.fragment_booking.*
-import kotlinx.android.synthetic.main.fragment_booking.partyname
-import kotlinx.android.synthetic.main.fragment_booking.view.*
-import kotlinx.android.synthetic.main.fragment_booking.view.partyname
-import kotlinx.android.synthetic.main.fragment_edit.*
 import kotlinx.android.synthetic.main.fragment_edit.view.*
-import kotlinx.android.synthetic.main.fragment_mybookings.view.*
-import org.wit.recipebook.models.BookingJSONStore
 import java.lang.Integer.parseInt
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class EditFragment : Fragment() {

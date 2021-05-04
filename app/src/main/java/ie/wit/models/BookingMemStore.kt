@@ -17,17 +17,26 @@ class BookingMemStore : BookingStore {
             return bookings
         }
 
-        override fun findById(id:Long) : BookingModel? {
-            val foundBooking: BookingModel? = bookings.find { it.id == id }
-            return foundBooking
-        }
+    override fun findById(id: Long): BookingModel? {
+        TODO("Not yet implemented")
+    }
+
+//        override fun findById(id:Long) : BookingModel? {
+////            val foundBooking: BookingModel? = bookings.find { it.id == id }
+////            return foundBooking
+////           }
 
 
-        override fun create(booking: BookingModel) {
-            booking.id = getId()
-            bookings.add(booking)
-            logAll()
-        }
+    override fun create(booking: BookingModel) {
+        TODO("Not yet implemented")
+    }
+
+
+//        override fun create(booking: BookingModel) {
+//            booking.id = getId()
+//            bookings.add(booking)
+//            logAll()
+//        }
 
     override fun update(bookingModel: BookingModel) {
         TODO("Not yet impledmented")

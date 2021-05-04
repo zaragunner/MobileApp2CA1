@@ -37,32 +37,44 @@ class BookingJSONStore : BookingStore, AnkoLogger {
     }
 
     override fun findById(id: Long): BookingModel? {
-        val foundBooking: BookingModel? = bookings.find { it.id == id }
-        return foundBooking
+        TODO("Not yet implemented")
     }
-
 
     override fun create(booking: BookingModel) {
-        booking.id = generateRandomId()
-        bookings.add(booking)
-        serialize()
+        TODO("Not yet implemented")
     }
 
-
-
-        override fun update(booking: BookingModel) {
-        val bookingList = findAll() as ArrayList<BookingModel>
-        var foundBooking: BookingModel? = bookingList.find { p -> p.id == booking.id }
-        if (foundBooking != null) {
-            foundBooking.partyName= booking.partyName
-            foundBooking.partyContact = booking.partyContact
-            foundBooking.partyAmount = booking.partyAmount
-            foundBooking.bookingTime = booking.bookingTime
-            foundBooking.bookingDate = booking.bookingDate
-
-        }
-        serialize()
+    override fun update(bookingModel: BookingModel) {
+        TODO("Not yet implemented")
     }
+
+//    override fun findById(id: Long): BookingModel? {
+//        val foundBooking: BookingModel? = bookings.find { it.uid == id }
+//        return foundBooking
+//    }
+
+
+//    override fun create(booking: BookingModel) {
+//        booking.id = generateRandomId()
+//        bookings.add(booking)
+//        serialize()
+//    }
+
+
+
+//        override fun update(booking: BookingModel) {
+//        val bookingList = findAll() as ArrayList<BookingModel>
+//        var foundBooking: BookingModel? = bookingList.find { p -> p.id == booking.id }
+//        if (foundBooking != null) {
+//            foundBooking.partyName= booking.partyName
+//            foundBooking.partyContact = booking.partyContact
+//            foundBooking.partyAmount = booking.partyAmount
+//            foundBooking.bookingTime = booking.bookingTime
+//            foundBooking.bookingDate = booking.bookingDate
+//
+//        }
+//        serialize()
+//    }
 //
     override fun delete(booking: BookingModel) {
         bookings.remove(booking)
