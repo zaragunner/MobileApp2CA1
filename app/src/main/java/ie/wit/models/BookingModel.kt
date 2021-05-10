@@ -14,9 +14,9 @@ data class  BookingModel(
     var partyContact: String = "",
     var partyAmount: Int = 0,
     var bookingTime: String = "",
-    var bookingDate: String = ""
-
-) : Parcelable {
+    var bookingDate: String = "")
+                : Parcelable
+{
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(

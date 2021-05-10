@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import ie.wit.R
 import ie.wit.adapters.BookingAdapter
+import ie.wit.adapters.BookingListener
 import ie.wit.main.BookingApp
 //import ie.wit.models.BookingMemStore
 import ie.wit.models.BookingModel
@@ -29,8 +30,6 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
 
-interface BookingListener {
-    fun onBookingClick(booking: BookingModel)
 
     class MyBookingsFragment : Fragment(), BookingListener, AnkoLogger {
         lateinit var app: BookingApp
@@ -119,14 +118,18 @@ interface BookingListener {
 
         }
 
+        override fun onBookingClick(booking: BookingModel) {
+            activity!!.supportFragmentManager.beginTransaction()
+                .replace(R.id.homeFrame, EditFragment.newInstance(booking))
+                .addToBackStack(null)
+                .commit()
+        }
+
         override fun onResume() {
             super.onResume()
             getAllBookings(app.auth.currentUser!!.uid)
         }
 
-        override fun onBookingClick(booking: BookingModel) {
-            TODO("Not yet implemented")
-        }
 
 
         fun getAllBookings(userId: String?) {
@@ -157,7 +160,7 @@ interface BookingListener {
                 })
         }
     }
-}
+
 
 
 

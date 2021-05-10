@@ -1,12 +1,14 @@
 package ie.wit.fragments
 
 import android.os.Bundle
+import android.renderscript.Sampler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.google.firebase.database.ValueEventListener
 import ie.wit.R
 import ie.wit.main.BookingApp
 import ie.wit.models.BookingModel
@@ -27,6 +29,7 @@ class BookingFragment : Fragment(), AnkoLogger {
     lateinit var app: BookingApp
     var bookings = BookingModel()
     lateinit var loader: AlertDialog
+    lateinit var eventListener : ValueEventListener
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

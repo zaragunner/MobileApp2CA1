@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import ie.wit.R
 import ie.wit.fragments.AboutUsFragment
 import ie.wit.fragments.BookingFragment
-import ie.wit.fragments.BookingListener
+import ie.wit.fragments.MyBookingsFragment
 import ie.wit.main.BookingApp
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
@@ -63,9 +63,12 @@ class Home : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.nav_book -> navigateTo(BookingFragment.newInstance())
-            R.id.nav_mybookings -> navigateTo(BookingListener.MyBookingsFragment.newInstance())
-            R.id.nav_aboutus -> navigateTo(AboutUsFragment.newInstance())
+            R.id.nav_book ->
+                navigateTo(BookingFragment.newInstance())
+            R.id.nav_mybookings ->
+                navigateTo(MyBookingsFragment.newInstance())
+            R.id.nav_aboutus ->
+                navigateTo(AboutUsFragment.newInstance())
             R.id.nav_sign_out ->
                 signOut()
 
