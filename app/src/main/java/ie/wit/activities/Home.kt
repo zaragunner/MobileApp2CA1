@@ -11,14 +11,20 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 import ie.wit.R
 import ie.wit.fragments.AboutUsFragment
+import ie.wit.fragments.AllBookingsFragment
 import ie.wit.fragments.BookingFragment
-import ie.wit.fragments.BookingListener
+import ie.wit.fragments.MyBookingsFragment
+import ie.wit.main.BookingApp
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.fragment_booking.*
 import kotlinx.android.synthetic.main.home.*
+import kotlinx.android.synthetic.main.nav_header_home.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import org.json.JSONArray
 import java.io.IOException
@@ -28,12 +34,14 @@ class Home : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var ft: FragmentTransaction
+    lateinit var app: BookingApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         setSupportActionBar(toolbar)
+        app = application as BookingApp
 
 
         navView.setNavigationItemSelectedListener(this)
@@ -47,6 +55,22 @@ class Home : AppCompatActivity(),
         toggle.syncState()
         ft = supportFragmentManager.beginTransaction()
 
+        navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
+        navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
+
+        Picasso.get().load(app.auth.currentUser?.photoUrl)
+            .resize(190, 190)
+            .transform(CropCircleTransformation())
+            .into(navView.getHeaderView(0).imageView)
+
+        if (app.auth.currentUser?.photoUrl != null) {
+            navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
+            Picasso.get().load(app.auth.currentUser?.photoUrl)
+                .resize(180, 180)
+                .transform(CropCircleTransformation())
+                .into(navView.getHeaderView(0).imageView)
+        }
+
         val fragment = BookingFragment.newInstance()
         ft.replace(R.id.homeFrame, fragment)
         ft.commit()
@@ -56,9 +80,16 @@ class Home : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.nav_book -> navigateTo(BookingFragment.newInstance())
-            R.id.nav_mybookings -> navigateTo(BookingListener.MyBookingsFragment.newInstance())
-            R.id.nav_aboutus -> navigateTo(AboutUsFragment.newInstance())
+            R.id.nav_book ->
+                navigateTo(BookingFragment.newInstance())
+            R.id.nav_mybookings ->
+                navigateTo(MyBookingsFragment.newInstance())
+            R.id.nav_aboutus ->
+                navigateTo(AboutUsFragment.newInstance())
+            R.id.nav_sign_out ->
+                signOut()
+            R.id.nav_allBookings ->
+                navigateTo(AllBookingsFragment.newInstance())
 
             else -> toast("You Selected Something Else")
         }
@@ -95,6 +126,14 @@ class Home : AppCompatActivity(),
 
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun signOut() {
+        app.googleSignInClient.signOut().addOnCompleteListener(this) {
+            app.auth.signOut()
+            startActivity<Login>()
+            finish()
+        }
     }
 
 

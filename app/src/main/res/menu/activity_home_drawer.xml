@@ -12,6 +12,12 @@
             android:id="@+id/nav_mybookings"
             android:icon="@drawable/ic_menu_mybookings"
             android:title="@string/menu_mybookings" />
+
+        <item
+            android:id="@+id/nav_allBookings"
+            android:icon="@drawable/ic_menu_allbookings"
+            android:title="All Bookings" />
+
         <item
             android:id="@+id/nav_favourites"
             android:icon="@drawable/ic_menu_favorites"
@@ -37,6 +43,15 @@
 
 
 
+    </item>
+
+    <item android:title="Access Control">
+        <menu>
+            <item
+                android:id="@+id/nav_sign_out"
+                android:icon="@android:drawable/ic_menu_revert"
+                android:title="@string/sign_out" />
+        </menu>
     </item>
 
 
