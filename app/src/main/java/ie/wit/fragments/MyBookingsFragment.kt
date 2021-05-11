@@ -19,10 +19,7 @@ import ie.wit.adapters.BookingListener
 import ie.wit.main.BookingApp
 //import ie.wit.models.BookingMemStore
 import ie.wit.models.BookingModel
-import ie.wit.utils.SwipeToDeleteCallback
-import ie.wit.utils.createLoader
-import ie.wit.utils.hideLoader
-import ie.wit.utils.showLoader
+import ie.wit.utils.*
 import kotlinx.android.synthetic.main.card_booking.*
 import kotlinx.android.synthetic.main.fragment_mybookings.view.*
 import kotlinx.android.synthetic.main.fragment_booking.view.*
@@ -31,7 +28,7 @@ import org.jetbrains.anko.info
 
 
 
-    class MyBookingsFragment : Fragment(), BookingListener, AnkoLogger {
+    open class MyBookingsFragment : Fragment(), BookingListener, AnkoLogger {
         lateinit var app: BookingApp
         lateinit var loader : androidx.appcompat.app.AlertDialog
         lateinit var root: View
@@ -65,10 +62,18 @@ import org.jetbrains.anko.info
             val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
             itemTouchDeleteHelper.attachToRecyclerView(root.recyclerView)
 
+            val swipeEditHandler = object : SwipeToEditCallback(activity!!) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    onBookingClick(viewHolder.itemView.tag as BookingModel)
+                }
+            }
+            val itemTouchEditHelper = ItemTouchHelper(swipeEditHandler)
+            itemTouchEditHelper.attachToRecyclerView(root.recyclerView)
+
 
             return root
         }
-        fun setSwipeRefresh() {
+        open fun setSwipeRefresh() {
             root.swiperefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
                 override fun onRefresh() {
                     root.swiperefresh.isRefreshing = true
@@ -127,7 +132,8 @@ import org.jetbrains.anko.info
 
         override fun onResume() {
             super.onResume()
-            getAllBookings(app.auth.currentUser!!.uid)
+            if(this::class == MyBookingsFragment::class)
+                getAllBookings(app.auth.currentUser!!.uid)
         }
 
 
@@ -149,7 +155,7 @@ import org.jetbrains.anko.info
 
                             bookingsList.add(booking!!)
                             root.recyclerView.adapter =
-                                BookingAdapter(bookingsList, this@MyBookingsFragment)
+                                BookingAdapter(bookingsList, this@MyBookingsFragment, listall = false)
                             root.recyclerView.adapter?.notifyDataSetChanged()
                             checkSwipeRefresh()
                             hideLoader(loader)

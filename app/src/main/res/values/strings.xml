@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">"Book 'n' Dine</string>
     <string name="action_book">Booking</string>
-    <string name="action_mybookings">My Bookings</string>
+    <string name="action_mybookings">Bookings</string>
     <string name="bookingTitle">Welcome </string>
     <string name="bookingSubtitle">Please enter all booking details</string>
     <string name="bookingButton">Book</string>
-    <string name="myBookingsTitle">My Bookings</string>
+    <string name="myBookingsTitle">Bookings</string>
     <string name="partyName">Party Name</string>
     <string name="datePrompt">  Date </string>
     <string name="timePrompt">Time </string>
@@ -67,6 +67,7 @@
     <string name="action_edit">Edit Booking</string>
     <string name="action_update">Update</string>
     <string name="message_edit">Please Update your Details Below</string>
+    <string name="menu_list_all"> All Restaurant Bookings</string>
 
     <string name="messageLoading">Please wait while we Connect to the Server...</string>
 </resources>

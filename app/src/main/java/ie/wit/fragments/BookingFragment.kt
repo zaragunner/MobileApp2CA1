@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.google.firebase.database.ValueEventListener
 import ie.wit.R
+import ie.wit.adapters.BookingListener
 import ie.wit.main.BookingApp
 import ie.wit.models.BookingModel
 import ie.wit.utils.createLoader
@@ -29,7 +30,8 @@ class BookingFragment : Fragment(), AnkoLogger {
     lateinit var app: BookingApp
     var bookings = BookingModel()
     lateinit var loader: AlertDialog
-    lateinit var eventListener : ValueEventListener
+    lateinit var eventListener: ValueEventListener
+    var favourite = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +54,7 @@ class BookingFragment : Fragment(), AnkoLogger {
         val root = inflater.inflate(R.layout.fragment_booking, container, false)
         loader = createLoader(activity!!)
         activity?.title = getString(R.string.action_book)
-
+        setFavouriteListener(root)
         setButtonListener(root)
         return root;
     }
@@ -107,8 +109,10 @@ class BookingFragment : Fragment(), AnkoLogger {
                         partyContact = bookings.partyContact,
                         bookingDate = date1,
                         bookingTime = bookings.bookingTime,
-                        email = app.auth.currentUser?.email
-                    )
+                        email = app.auth.currentUser?.email,
+                        isfavourite = favourite
+
+                        )
 
                 )
             }
@@ -133,9 +137,23 @@ class BookingFragment : Fragment(), AnkoLogger {
         val childUpdates = HashMap<String, Any>()
         childUpdates["/bookings/$key"] = bookingValues
         childUpdates["/user-bookings/$uid/$key"] = bookingValues
-
+        info(booking)
         app.database.updateChildren(childUpdates)
         hideLoader(loader)
+    }
+
+    fun setFavouriteListener(layout: View) {
+        layout.imagefavourite.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                if (!favourite) {
+                    layout.imagefavourite.setImageResource(android.R.drawable.star_big_on)
+                    favourite = true
+                } else {
+                    layout.imagefavourite.setImageResource(android.R.drawable.star_big_off)
+                    favourite = false
+                }
+            }
+        })
     }
 }
 

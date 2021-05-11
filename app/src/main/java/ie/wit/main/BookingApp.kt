@@ -2,6 +2,7 @@ package ie.wit.main
 
 import android.app.Application
 import android.util.Log
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import ie.wit.models.BookingMemStore
@@ -14,6 +15,7 @@ class BookingApp : Application() {
 
     lateinit var bookingsStore : BookingStore
     lateinit var chosenBooking : BookingModel
+    lateinit var googleSignInClient: GoogleSignInClient
 
 
     lateinit var auth : FirebaseAuth

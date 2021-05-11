@@ -14,7 +14,8 @@ data class  BookingModel(
     var partyContact: String = "",
     var partyAmount: Int = 0,
     var bookingTime: String = "",
-    var bookingDate: String = "")
+    var bookingDate: String = "",
+    var isfavourite: Boolean = false)
                 : Parcelable
 {
     @Exclude
@@ -26,7 +27,8 @@ data class  BookingModel(
             "partyContact" to partyContact,
             "partyAmount" to partyAmount,
             "bookingTime" to bookingTime,
-            "bookingDate" to bookingDate
+            "bookingDate" to bookingDate,
+            "isfavourite" to isfavourite
         )
     }
 }

@@ -19,53 +19,53 @@
 
         <TextView
             android:id="@+id/Title"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="20dp"
             android:text="@string/bookingTitle"
             android:textAlignment="center"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/subtitle"
-            android:textColor="@color/darkGrey"
             android:layout_width="220dp"
             android:layout_height="40dp"
             android:text="@string/bookingSubtitle"
             android:textAlignment="center"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Title" />
 
         <TextView
             android:id="@+id/partynameinput"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="40dp"
             android:text="@string/partyName"
+            android:textColor="@color/darkGrey"
             app:layout_constraintStart_toStartOf="@+id/partyamount"
             app:layout_constraintTop_toTopOf="@+id/partyname" />
 
         <EditText
             android:id="@+id/partyname"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="40dp"
             android:focusable="true"
             android:text=""
+            android:textColor="@color/darkGrey"
             app:layout_constraintStart_toEndOf="@+id/partynameinput"
             app:layout_constraintStart_toStartOf="@+id/bookedpartyamount"
             app:layout_constraintTop_toBottomOf="@+id/subtitle" />
 
         <TextView
             android:id="@+id/partyamount"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="40dp"
-           android:layout_marginTop="20dp"
+            android:layout_marginTop="20dp"
             android:text="@string/partyAmount"
+            android:textColor="@color/darkGrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/partyContact"
             app:layout_constraintTop_toBottomOf="@+id/partynameinput"
@@ -73,31 +73,31 @@
 
         <EditText
             android:id="@+id/bookedpartyamount"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="40dp"
-
             android:inputType="number"
+
+            android:textColor="@color/darkGrey"
             app:layout_constraintStart_toEndOf="@+id/partyamount"
             app:layout_constraintStart_toStartOf="@+id/bookingContact"
             app:layout_constraintTop_toTopOf="@+id/partyamount" />
 
         <TextView
             android:id="@+id/partyContact"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="40dp"
             android:text="@string/partycontact"
+            android:textColor="@color/darkGrey"
             app:layout_constraintStart_toStartOf="@+id/time"
             app:layout_constraintTop_toTopOf="@+id/bookingContact" />
 
         <EditText
             android:id="@+id/textView15"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="40dp"
             android:inputType="time"
             android:maxLength="5"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.321"
             app:layout_constraintStart_toEndOf="@+id/time"
@@ -105,13 +105,13 @@
 
         <EditText
             android:id="@+id/bookingContact"
-            android:textColor="@color/darkGrey"
             android:layout_width="181dp"
             android:layout_height="40dp"
-
             android:layout_marginTop="20dp"
+
             android:ems="10"
             android:inputType="number"
+            android:textColor="@color/darkGrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/partyContact"
             app:layout_constraintStart_toStartOf="@+id/textView15"
@@ -120,11 +120,11 @@
 
         <TextView
             android:id="@+id/time"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="40dp"
             android:layout_marginTop="24dp"
             android:text="@string/timePrompt"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.108"
             app:layout_constraintStart_toStartOf="parent"
@@ -132,11 +132,11 @@
 
         <TextView
             android:id="@+id/bookedDate"
-            android:textColor="@color/darkGrey"
             android:layout_width="180dp"
             android:layout_height="40dp"
             android:text="@string/datePrompt"
             android:textAlignment="center"
+            android:textColor="@color/darkGrey"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,9 +145,9 @@
 
         <DatePicker
             android:id="@+id/bookingDate"
-            android:textColor="@color/darkGrey"
             android:layout_width="311dp"
             android:layout_height="370dp"
+            android:textColor="@color/darkGrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -155,20 +155,38 @@
             app:layout_constraintTop_toBottomOf="@+id/bookedDate"
             app:layout_constraintVertical_bias="0.0" />
 
+
+
         <Button
             android:id="@+id/bookButton"
-            android:textColor="@color/darkGrey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Book"
+            android:textColor="@color/darkGrey"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintHorizontal_bias="0.198"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bookingDate"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintVertical_bias="0.709" />
         /
         >
+
+        <ImageView
+            android:id="@+id/imagefavourite"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentTop="true"
+android:layout_marginTop="10dp"
+            android:layout_marginEnd="76dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/bookButton"
+            app:layout_constraintTop_toBottomOf="@+id/bookingDate"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@android:drawable/star_big_off" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
