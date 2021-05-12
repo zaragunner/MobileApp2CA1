@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 //import com.google.firebase.quickstart.auth.R
 import ie.wit.R
 import ie.wit.main.BookingApp
@@ -207,6 +208,7 @@ class Login : AppCompatActivity(), View.OnClickListener, AnkoLogger  {
             signedInButtons.visibility = View.VISIBLE
 
             verifyEmailButton.isEnabled = !user.isEmailVerified
+            app.storage = FirebaseStorage.getInstance().reference
             app.database = FirebaseDatabase.getInstance("https://book-n-dine-59501-default-rtdb.europe-west1.firebasedatabase.app/").reference
             startActivity<Home>()
         } else {

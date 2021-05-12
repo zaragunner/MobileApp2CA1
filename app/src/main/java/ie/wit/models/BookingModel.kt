@@ -15,6 +15,7 @@ data class  BookingModel(
     var partyAmount: Int = 0,
     var bookingTime: String = "",
     var bookingDate: String = "",
+    var profilepic: String = "",
     var isfavourite: Boolean = false)
                 : Parcelable
 {
@@ -28,6 +29,7 @@ data class  BookingModel(
             "partyAmount" to partyAmount,
             "bookingTime" to bookingTime,
             "bookingDate" to bookingDate,
+            "profilepic" to profilepic,
             "isfavourite" to isfavourite
         )
     }
