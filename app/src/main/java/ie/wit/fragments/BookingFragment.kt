@@ -110,7 +110,8 @@ class BookingFragment : Fragment(), AnkoLogger {
                         bookingDate = date1,
                         bookingTime = bookings.bookingTime,
                         email = app.auth.currentUser?.email,
-                        isfavourite = favourite
+                        isfavourite = favourite,
+                        profilepic = app.userImage.toString(),
 
                         )
 

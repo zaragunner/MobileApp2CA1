@@ -3,9 +3,13 @@ package ie.wit.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.storage.StorageReference
+import com.squareup.picasso.Picasso
 import ie.wit.R
 import ie.wit.models.BookingModel
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.card_booking.view.*
 
 
@@ -63,5 +67,15 @@ class BookingAdapter   constructor(var bookings: ArrayList<BookingModel>,
                 itemView.setOnClickListener {
                     listener.onBookingClick(booking)
                 }
+
+            if(!booking.profilepic.isEmpty()) {
+                Picasso.get().load(booking.profilepic.toUri())
+                    //.resize(180, 180)
+                    .transform(CropCircleTransformation())
+                    .into(itemView.imageIcon)
+            }
+            else
+                itemView.imageIcon.setImageResource(R.mipmap.ic_launcher_homer_round)
         }
-    }}
+        }
+    }
